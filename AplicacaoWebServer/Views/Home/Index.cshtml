@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="d-flex justify-content-center col-5">
+        <label class="label" data-toggle="tooltip" title="Selecione a Imagem">
+            <img class="rounded border" id="imagemUpload"
+                 alt="avatar"
+                 width="120" height="160">
+
+        </label>
+    </div>
+
+    <div class="d-flex justify-content-center col-5">
+        <label class="label" data-toggle="tooltip" >
+            <img class="rounded border" id="imageReceived"
+                 alt="recebida"
+                 width="120" height="160">
+
+        </label>
+    </div>
+
+
+</div>
+
+<div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputImg" name="image" accept="image/*" />
+    <label class="custom-file-label col-5" for="validatedCustomFile">Selecione a Imagem</label>
+</div>
+
+<div class="chat">
+    <div class="row justify-content-center">
+        <div class="col-2 bcf">
+            <div class="col-5">
+                Name: <input type="text" id="inputUserName" />
+            </div>
+            <div class="col-sm-5">
+                Message: <input type="text" id="inputMessage" />
+            </div>
+
+            <div class="col-sm-3">
+                <input class="btn btn-info" type="submit" id="sendMessageBtn" value="Send Message" />
+            </div>
+        </div>
+        <div class="col-2 bcs">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/node_modules/@@aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/scan-hub.js"></script>
+    <script type="text/javascript">
+
+        var imagem = document.getElementById("imagemUpload");
+        var theFileElem = document.getElementById("inputImg");
+
+        theFileElem.addEventListener("change", function (d) {
+
+
+
+            if (theFileElem.files.length != 0 && theFileElem.files[0].type.match(/image.*/)) {
+                const fileReader = new FileReader();
+
+                fileReader.onload = function (e) {
+                    imagem.src = e.target.result;
+                };
+                fileReader.onerror = function (e) {
+                    alert("cannot load binary file");
+                };
+                fileReader.readAsDataURL(theFileElem.files[0]);
+            } else {
+                alert("Please select a binary file");
+            }
+
+        });
+
+    </script>
+}
