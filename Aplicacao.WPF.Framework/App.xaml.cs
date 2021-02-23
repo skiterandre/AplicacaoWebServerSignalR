@@ -1,6 +1,6 @@
-﻿using Aplicacao.WPF.Service;
-using Aplicacao.WPF.ViewModel;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Aplicacao.WPF.Framework.Service;
+using Aplicacao.WPF.Framework.ViewModel;
+using Microsoft.AspNet.SignalR.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,22 +9,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Aplicacao.WPF
+namespace Aplicacao.WPF.Framework
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-
-        private const string URL_SIGNALR_SERVER = "http://localhost:5000/sendMessageHub";
+        private const string URL_SIGNALR_SERVER = "http://localhost:5000/";
 
         protected override void OnStartup(StartupEventArgs e)
         {
 
-            HubConnection hubConnection = new HubConnectionBuilder()
-                .WithUrl(URL_SIGNALR_SERVER)
-                .Build();
+            HubConnection hubConnection = new HubConnection(URL_SIGNALR_SERVER);
 
             ImageSenderViewModel imageSenderViewModel = ImageSenderViewModel.CreatedConnectedViewModel(new SignalRImageSenderService(hubConnection));
 

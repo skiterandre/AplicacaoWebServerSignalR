@@ -1,4 +1,4 @@
-﻿namespace Aplicacao.WPF.ViewModel
+﻿namespace Aplicacao.WPF.Framework.ViewModel
 {
     public class MainViewModel
     {

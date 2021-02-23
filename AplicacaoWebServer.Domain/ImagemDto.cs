@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AplicacaoWebServer.Domain
 {
@@ -10,4 +8,5 @@ namespace AplicacaoWebServer.Domain
         public string Message { get; set; }
         public byte[] Imagem { get; set; }
     }
+
 }
