@@ -17,24 +17,24 @@ namespace Aplicacao.WPF
     public partial class App : Application
     {
 
-        private const string URL_SIGNALR_SERVER = "http://localhost:5000/sendMessageHub";
+        //private const string URL_SIGNALR_SERVER = "http://localhost:5000/sendMessageHub";
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
+        //protected override void OnStartup(StartupEventArgs e)
+        //{
 
-            HubConnection hubConnection = new HubConnectionBuilder()
-                .WithUrl(URL_SIGNALR_SERVER)
-                .Build();
+        //    HubConnection hubConnection = new HubConnectionBuilder()
+        //        .WithUrl(URL_SIGNALR_SERVER)
+        //        .Build();
 
-            ImageSenderViewModel imageSenderViewModel = ImageSenderViewModel.CreatedConnectedViewModel(new SignalRImageSenderService(hubConnection));
+        //    ImageSenderViewModel imageSenderViewModel = ImageSenderViewModel.CreatedConnectedViewModel(new SignalRImageSenderService(hubConnection));
 
 
-            MainWindow window = new MainWindow
-            {
-                DataContext = new MainViewModel(imageSenderViewModel)
-            };
+        //    MainWindow window = new MainWindow
+        //    {
+        //        DataContext = new MainViewModel(imageSenderViewModel)
+        //    };
 
-            window.Show();
-        }
+        //    window.Show();
+        //}
     }
 }
